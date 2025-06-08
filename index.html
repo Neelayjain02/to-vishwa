@@ -121,6 +121,35 @@
       p {
         font-size: 1em;
       }
+.photo-strip {
+  width: 100%;
+  overflow: hidden;
+  margin: 30px 0;
+}
+
+.photo-track {
+  display: flex;
+  gap: 10px;
+  animation: scrollPhotos 40s linear infinite;
+  width: max-content;
+}
+
+.photo-track img {
+  height: 150px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  object-fit: cover;
+}
+
+/* animation */
+@keyframes scrollPhotos {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
 
       button {
         padding: 10px 20px;
@@ -154,6 +183,19 @@
   <p>
     Just a little page to say: you’re appreciated, you’re awesome, and you matter.
   </p>
+<div class="photo-strip">
+  <div class="photo-track">
+    <img src="photo1.jpg" alt="photo1" />
+    <img src="photo2.jpg" alt="photo2" />
+    <img src="photo3.jpg" alt="photo3" />
+    <img src="photo4.jpg" alt="photo4" />
+    <!-- repeat again to create smooth loop -->
+    <img src="photo1.jpg" alt="photo1" />
+    <img src="photo2.jpg" alt="photo2" />
+    <img src="photo3.jpg" alt="photo3" />
+    <img src="photo4.jpg" alt="photo4" />
+  </div>
+</div>
 
   <button onclick="revealMessage()">Click Me!</button>
   <p id="hiddenMessage">Thank you for being you—genuinely, stupidly, unapologetically you 💜</p>
