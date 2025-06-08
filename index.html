@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To Vishwa 💫</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+      color: #2c2c2c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    h1, p, button, footer {
+      animation: fadeIn 1.5s ease forwards;
+      opacity: 0;
+    }
+
+    h1 { animation-delay: 0.2s; }
+    p:nth-of-type(1) { animation-delay: 0.5s; }
+    p:nth-of-type(2) { animation-delay: 0.8s; }
+    p:nth-of-type(3) { animation-delay: 1.1s; }
+    button { animation-delay: 1.5s; }
+    #hiddenMessage { animation: fadeIn 1s ease forwards; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #b388eb;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #a069d9;
+    }
+
+    #hiddenMessage {
+      display: none;
+      font-weight: bold;
+      margin-top: 15px;
+      color: #3e3e3e;
+    }
+
+    footer {
+      margin-top: 50px;
+      font-size: 0.9em;
+      color: #666;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #d8b4fe;
+      transform: rotate(45deg);
+      animation: float 6s linear infinite;
+      opacity: 0.6;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #d8b4fe;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes float {
+      0% {
+        bottom: -40px;
+        left: calc(100% * var(--x));
+        opacity: 0.6;
+        transform: rotate(45deg) translateY(0);
+      }
+      100% {
+        bottom: 110%;
+        transform: rotate(45deg) translateY(-100px);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.8em;
+      }
+
+      p {
+        font-size: 1em;
+      }
+
+      button {
+        padding: 10px 20px;
+      }
+    }
+  </style>
+
+  <!-- Confetti script -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+
+  <!-- Soft piano background -->
+  <audio autoplay loop>
+    <source src="soft_piano_loop.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <h1>From “Hey” to “You Okay?” — A Journey 💜</h1>
+
+  <p>
+    I honestly didn’t know that a simple intro from Kanan would lead to all this.<br>
+    From casual chats to deep convos, jokes, rants, support, and chaos—we've kind of built our own weird, wonderful corner.
+  </p>
+
+  <p>
+    And yeah, from my POV, the bond was always meant to be pure...<br>
+    (unless <em>you</em> corrupted it 👀).
+  </p>
+
+  <p>
+    Just a little page to say: you’re appreciated, you’re awesome, and you matter.
+  </p>
+
+  <button onclick="revealMessage()">Click Me!</button>
+  <p id="hiddenMessage">Thank you for being you—genuinely, stupidly, unapologetically you 💜</p>
+
+  <footer>— Neelay, your accidental emotional support human ✨</footer>
+
+  <!-- Script for hearts + confetti -->
+  <script>
+    function revealMessage() {
+      document.getElementById("hiddenMessage").style.display = "block";
+
+      // Confetti pop
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 },
+        colors: ['#d8b4fe', '#c084fc', '#a855f7']
+      });
+    }
+
+    // Floating hearts
+    for (let i = 0; i < 15; i++) {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.setProperty('--x', Math.random());
+      heart.style.animationDelay = `${Math.random() * 10}s`;
+      heart.style.left = `${Math.random() * 100}%`;
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
